@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop/utils/app_routes.dart';
 
+import '../providers/cart.dart';
+import '../widgets/badge.dart';
 import '../widgets/product_grid.dart';
 
 enum FilterOptions {
@@ -13,8 +17,8 @@ class ProductsOverviewScreen extends StatefulWidget {
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
-
   bool _showFavoriteOnly = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +28,15 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           PopupMenuButton(
             icon: Icon(Icons.more_vert),
             onSelected: (FilterOptions selectedValue) {
-              setState(() {
-                if(selectedValue == FilterOptions.Favorite){
+              if (selectedValue == FilterOptions.Favorite) {
+                setState(() {
                   _showFavoriteOnly = true;
-                }else{
+                });
+              } else {
+                setState(() {
                   _showFavoriteOnly = false;
-                }
-              });
+                });
+              }
             },
             itemBuilder: (_) => [
               PopupMenuItem(
@@ -42,6 +48,18 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 value: FilterOptions.All,
               ),
             ],
+          ),
+          Consumer<Cart>(
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.of(context).pushNamed(AppRoutes.CART);
+              },
+            ),
+            builder: (_, cart, child) => Badge(
+              value: cart.itemsCount.toString(),
+              child: child,
+            ),
           ),
         ],
       ),
