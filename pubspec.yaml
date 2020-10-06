@@ -28,6 +28,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   provider: ^4.3.2
+  intl: ^0.16.1
 
 analyzer:
   enable-experiment:
