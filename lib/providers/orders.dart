@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import './cart.dart';
 
@@ -25,11 +25,11 @@ class Orders with ChangeNotifier {
     return [..._items];
   }
 
-  int get itemsCount{
+  int get itemsCount {
     return _items.length;
   }
+
   void addOrder(Cart cart) {
-    // final total = products.fold(0.0, (t, i) => t + (i.price * i.quantity));
     _items.insert(
       0,
       Order(

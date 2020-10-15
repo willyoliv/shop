@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../utils/app_routes.dart';
 import '../providers/product.dart';
 import '../providers/cart.dart';
+import '../utils/app_routes.dart';
 
 class ProductGridItem extends StatelessWidget {
   @override
@@ -51,8 +49,7 @@ class ProductGridItem extends StatelessWidget {
               Scaffold.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
-                    'Produto adicionado com sucesso',
-                    textAlign: TextAlign.center,
+                    'Produto adicionado com sucesso!',
                   ),
                   duration: Duration(seconds: 2),
                   action: SnackBarAction(

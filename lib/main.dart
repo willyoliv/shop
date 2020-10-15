@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './utils/app_routes.dart';
+
+import './views/products_overview_screen.dart';
+import './views/product_detail_screen.dart';
+import './views/cart_screen.dart';
+import './views/orders_screen.dart';
+import './views/products_screen.dart';
+import './views/product_form_screen.dart';
+
+import './providers/products.dart';
 import './providers/cart.dart';
 import './providers/orders.dart';
-import './providers/products.dart';
-
-import './utils/app_routes.dart';
-import './views/cart_screen.dart';
-import './views/product_detail_screen.dart';
-import './views/products_overview_screen.dart';
-import './views/product_form_screen.dart';
-import './views/products_screen.dart';
-import './views/orders_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -37,14 +38,14 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.deepOrange,
           fontFamily: 'Lato',
         ),
-        // home: ProductsOverviewScreen(),
+        // home: ProductOverviewScreen(),
         routes: {
-          AppRoutes.HOME: (ctx) => ProductsOverviewScreen(),
-          AppRoutes.PRODUCTS: (ctx) => ProductsScreen(),
+          AppRoutes.HOME: (ctx) => ProductOverviewScreen(),
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailScreen(),
-          AppRoutes.PRODUCT_FORM: (ctx) => ProductFormScreen(),
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDERS: (ctx) => OrdersScreen(),
+          AppRoutes.PRODUCTS: (ctx) => ProductsScreen(),
+          AppRoutes.PRODUCT_FORM: (ctx) => ProductFormScreen(),
         },
       ),
     );

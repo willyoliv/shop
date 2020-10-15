@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../providers/product.dart';
 
@@ -7,6 +6,7 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Product product =
         ModalRoute.of(context).settings.arguments as Product;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(product.title),
@@ -38,7 +38,7 @@ class ProductDetailScreen extends StatelessWidget {
                 product.description,
                 textAlign: TextAlign.center,
               ),
-            )
+            ),
           ],
         ),
       ),

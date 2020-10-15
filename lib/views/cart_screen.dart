@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop/widgets/cart_item_widget.dart';
+
+import '../widgets/cart_item_widget.dart';
 import '../providers/cart.dart';
 import '../providers/orders.dart';
 
@@ -9,6 +10,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Cart cart = Provider.of(context);
     final cartItems = cart.items.values.toList();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Carrinho'),
@@ -24,17 +26,14 @@ class CartScreen extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     'Total',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
+                    style: TextStyle(fontSize: 20),
                   ),
                   SizedBox(width: 10),
                   Chip(
                     label: Text(
-                      'R\$ ${cart.totalAmount.toStringAsFixed(2)}',
+                      'R\$${cart.totalAmount}',
                       style: TextStyle(
-                        color:
-                            Theme.of(context).primaryTextTheme.headline6.color,
+                        color: Theme.of(context).primaryTextTheme.title.color,
                       ),
                     ),
                     backgroundColor: Theme.of(context).primaryColor,

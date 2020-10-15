@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/orders.dart';
-
 import '../widgets/app_drawer.dart';
+import '../providers/orders.dart';
 import '../widgets/order_widget.dart';
+
 
 class OrdersScreen extends StatelessWidget {
   @override
@@ -14,7 +14,6 @@ class OrdersScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Meus Pedidos'),
       ),
-
       drawer: AppDrawer(),
       body: ListView.builder(
         itemCount: orders.itemsCount,

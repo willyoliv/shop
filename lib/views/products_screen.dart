@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/products.dart';
-import '../utils/app_routes.dart';
-
-import '../widgets/product_item.dart';
 import '../widgets/app_drawer.dart';
+import '../providers/products.dart';
+import '../widgets/product_item.dart';
+import '../utils/app_routes.dart';
 
 class ProductsScreen extends StatelessWidget {
   @override
@@ -14,7 +13,7 @@ class ProductsScreen extends StatelessWidget {
     final products = productsData.items;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Produtos'),
+        title: Text('Gerenciar Produtos'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),

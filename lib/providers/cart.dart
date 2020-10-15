@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
-import 'package:shop/providers/product.dart';
+import './product.dart';
 
 class CartItem {
   final String id;
@@ -30,6 +30,14 @@ class Cart with ChangeNotifier {
     return _items.length;
   }
 
+  double get totalAmount {
+    double total = 0.0;
+    _items.forEach((key, cartItem) {
+      total += cartItem.price * cartItem.quantity;
+    });
+    return total;
+  }
+
   void addItem(Product product) {
     if (_items.containsKey(product.id)) {
       _items.update(
@@ -49,8 +57,8 @@ class Cart with ChangeNotifier {
           id: Random().nextDouble().toString(),
           productId: product.id,
           title: product.title,
-          quantity: 1,
           price: product.price,
+          quantity: 1,
         ),
       );
     }
@@ -59,11 +67,11 @@ class Cart with ChangeNotifier {
   }
 
   void removeSingleItem(productId) {
-    if (!_items.containsKey(productId)) {
+    if(!_items.containsKey(productId)) {
       return;
     }
 
-    if (_items[productId].quantity == 1) {
+    if(_items[productId].quantity == 1) {
       _items.remove(productId);
     } else {
       _items.update(
@@ -77,21 +85,13 @@ class Cart with ChangeNotifier {
         ),
       );
     }
+
     notifyListeners();
   }
 
   void removeItem(String productId) {
     _items.remove(productId);
     notifyListeners();
-  }
-
-  double get totalAmount {
-    double total = 0.00;
-    _items.forEach((key, cartItem) {
-      total += cartItem.price * cartItem.quantity;
-    });
-    //total = num.parse(total.toStringAsPrecision(2));
-    return total;
   }
 
   void clear() {

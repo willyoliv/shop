@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop/utils/app_routes.dart';
-
-import '../providers/cart.dart';
-import '../widgets/app_drawer.dart';
-import '../widgets/badge.dart';
 import '../widgets/product_grid.dart';
+import '../widgets/badge.dart';
+import '../widgets/app_drawer.dart';
+import '../providers/cart.dart';
+import '../utils/app_routes.dart';
 
 enum FilterOptions {
   Favorite,
   All,
 }
 
-class ProductsOverviewScreen extends StatefulWidget {
+class ProductOverviewScreen extends StatefulWidget {
   @override
-  _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
+  _ProductOverviewScreenState createState() => _ProductOverviewScreenState();
 }
 
-class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
+class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   bool _showFavoriteOnly = false;
 
   @override
@@ -27,18 +26,16 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         title: Text('Minha Loja'),
         actions: <Widget>[
           PopupMenuButton(
-            icon: Icon(Icons.more_vert),
             onSelected: (FilterOptions selectedValue) {
-              if (selectedValue == FilterOptions.Favorite) {
-                setState(() {
+              setState(() {
+                if (selectedValue == FilterOptions.Favorite) {
                   _showFavoriteOnly = true;
-                });
-              } else {
-                setState(() {
+                } else {
                   _showFavoriteOnly = false;
-                });
-              }
+                }
+              });
             },
+            icon: Icon(Icons.more_vert),
             itemBuilder: (_) => [
               PopupMenuItem(
                 child: Text('Somente Favoritos'),
@@ -61,7 +58,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               value: cart.itemsCount.toString(),
               child: child,
             ),
-          ),
+          )
         ],
       ),
       body: ProductGrid(_showFavoriteOnly),
