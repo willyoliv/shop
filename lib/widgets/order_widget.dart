@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -22,7 +20,7 @@ class _OrderWidgetState extends State<OrderWidget> {
     final itemsHeight = (widget.order.products.length * 25.0) + 10;
     return AnimatedContainer(
       duration: Duration(milliseconds: 300),
-      height: _expanded ? itemsHeight + 90 : 90,
+      height: _expanded ? itemsHeight + 92 : 92,
       child: Card(
         margin: EdgeInsets.all(10),
         child: Column(
@@ -41,37 +39,37 @@ class _OrderWidgetState extends State<OrderWidget> {
                 },
               ),
             ),
-            if (_expanded)
-              Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 4,
-                ),
-                height: itemsHeight,
-                child: ListView(
-                  children: widget.order.products.map((product) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          product.title,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          '${product.quantity} x R\$ ${product.price}',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    );
-                  }).toList(),
-                ),
+            AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              height: _expanded ? itemsHeight : 0,
+              padding: EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 4,
               ),
+              child: ListView(
+                children: widget.order.products.map((product) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        product.title,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '${product.quantity} x R\$ ${product.price}',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  );
+                }).toList(),
+              ),
+            ),
           ],
         ),
       ),

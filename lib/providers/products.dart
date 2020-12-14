@@ -108,14 +108,3 @@ class Products with ChangeNotifier {
   }
 }
 
-// bool _showFavoriteOnly = false;
-
-// void showFavoriteOnly() {
-//   _showFavoriteOnly = true;
-//   notifyListeners();
-
-// }
-// void showAll() {
-//   _showFavoriteOnly = false;
-//   notifyListeners();
-// }

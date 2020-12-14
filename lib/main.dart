@@ -6,6 +6,7 @@ import './providers/cart.dart';
 import './providers/orders.dart';
 import './providers/products.dart';
 import './utils/app_routes.dart';
+import './utils/custom_route.dart';
 import './views/auth_home_screen.dart';
 import './views/cart_screen.dart';
 import './views/orders_screen.dart';
@@ -49,11 +50,16 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.purple,
           accentColor: Colors.deepOrange,
           fontFamily: 'Lato',
+          pageTransitionsTheme: PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: CustomPageTransitionsBuilder(),
+              TargetPlatform.iOS: CustomPageTransitionsBuilder(),
+            },
+          ),
         ),
         // home: ProductOverviewScreen(),
         routes: {
           AppRoutes.AUTH_HOME: (ctx) => AuthOrHomeScreen(),
-          // AppRoutes.HOME: (ctx) => ProductOverviewScreen(),
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailScreen(),
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDERS: (ctx) => OrdersScreen(),
